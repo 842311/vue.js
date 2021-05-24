@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        #app{
+            padding: 50px;
+        }
+        .banner{
+            width: 600px;
+            height: 150px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 10px #888888;
+            font-size: 32px;
+            font-weight: bolder;
+            text-align: center;
+            line-height: 150px;
+            background-color:#033592;
+            color: #fff;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="banner">
+            {{text | TransformFilter}}
+        </div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                text:"哈哈 哈 suoi Apowo"
+            },
+            // 私有过滤器
+            filters:{
+                TransformFilter:function(val){
+                    var str=val.split(" ");
+                    var re="";
+                    for(var i=0;i<str.length;i++){
+                        re+=str[i].charAt(0).toUpperCase()+str[i].substring(i)+" ";
+                    }
+                    return re;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
