@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue的条件渲染指令</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        条件渲染指令
+        1.v-if 和 v-else
+
+        v-if他根据表达式的真假来删除和插入元素，语法如下
+
+        <div v-if="expression"></div>
+
+            expression是一个bool返回值，表达式可以是bool属性也可以是运算式
+            PS： v-if必须跟v-else 配套使用，否则无法被识别
+
+        以上功能 v-show也能实现。
+            v-if 于 v-show 的区别：
+                                    1. v-if 会删除和插入元素 
+                                    2. v-show 只是改变 css 中的 display 样式
+        如果是频繁切换推荐用 v-show;
+            v-show指令不支持 <template> 元素 也不支持 v-else
+     -->
+
+
+    <div id="cc">
+        <h1>用户登录/注册</h1>
+        <input type="checkbox" v-model="ex">
+        <div class="box">
+            <div v-if="ex">
+                <h3>注册</h3>
+                账号：<input type="text"><br>
+                密码:<input type="password" name="" id=""><br>
+                确认密码: <input type="password" name="" id="">
+            </div>
+            <div v-else>
+                <h3>登录</h3>
+                账号：<input type="text"><br>
+                密码<input type="password" name="" id="">
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cd">
+        <h1>夏天上班时间</h1>
+        <input type="checkbox" v-model="ex1">
+        <div class="box">
+            <div v-show="ex1">
+                <h3>夏天上班时间</h3>
+                <p>8:30-17:00</p>
+            </div>
+            <div v-show="!ex1">
+                <h3>冬天上班时间</h3>
+               <p>9:00-17:30</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script> 
+        var vm=new Vue({
+            el:"#cd",
+            data:{
+                ex1:true
+            }
+        }); 
+        var vc=new Vue({
+            el:"#cc",
+            data:{
+                ex:false
+            }
+        }); 
+    </script>
+
+</body>
+</html>

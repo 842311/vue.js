@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        文本插值
+           1.使用双大括号： {{}}
+           例如： <span>{{text}}</span>      text是(占位符)
+
+           2.如果只需要渲染一次后续数据变化不再关心的 可以通过 v-once指令
+           例如： <span v-once>{{text}}</span>
+
+           3.还可以使用 v-text 来代替双大括号
+           例如： <span v-text="text"></span>
+           
+           sp:以上这些都不会解析html标签，例如实例化一个Vue对象 在data数据源中绑定 text:"<h1>哈哈哈</h1>"
+           页面会连<h1>一起显示。
+               如果想解析html标签就给使用 v-html
+               例如：<span v-html="text"></span>
+    -->
+
+    <!-- 先定义一个视图区域 app -->
+
+    <div id="app">
+        <!-- 双大括号占位符 -->
+        <p>{{ Tstr }}</p>
+
+        <!-- 只渲染一次 -->
+        <p v-once="Tstr">{{Tstr}}</p>
+
+        <!--  -->
+        <p v-text="Tstr"></p>
+
+        <!-- 解析html标签 -->
+        <p v-html="Tstr"></p>
+
+    </div>
+
+
+
+    <script>
+        var vm=new Vue({
+            //绑定视图区
+            el:"#app",
+
+            //绑定数据源
+            data:{
+                Tstr:"<h1>Holle World</h1>"
+            }
+        });
+
+
+    </script>
+</body>
+</html>

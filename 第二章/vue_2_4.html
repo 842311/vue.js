@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue事件绑定</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        #app{
+            width: 600px;
+            margin: 50 auto;
+        }
+        .box{
+            box-shadow: 0 0 5px 5px #888888;
+            padding: 20px 100px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 实现四则运算器 -->
+    <div id="app">
+        <h1>加减乘除计算器</h1>
+        <p>
+            <label for="textNum1">数字1：</label>
+            <input type="text" id="textNum1" v-model="num1">
+        </p>
+        <p>
+            <label for="textNum2">数字2：</label>
+            <input type="text" id="textNum2" v-model="num2">
+        </p>
+
+        <!-- 
+            vue通过 v-on：事件函数 来绑定事件；也可以用 @事件函数="自定义函数名" 来绑定事件。
+            也可以在 @事件函数="{表达式}" 来绑定
+
+         -->
+
+
+        <button v-on:click="doadd">加法</button>
+        <button @click="dojian">减法</button>
+        <!-- 可以通过 对象来调用 vue里声明的成员 -->
+        <button @click="doc">乘法</button>  
+        <button @click="dochu">除法</button>
+
+        
+        <p>
+            <label for="textNum3">结果：</label>
+            <input type="text" id="textNum3" v-model="re">
+        </p>
+    </div>
+
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                num1:0,
+                num2:0,
+                re:0
+            },
+            methods:{
+                doadd:function(event){
+                    this.re=parseInt(this.num1)+parseInt(this.num2);
+                },
+                dochu:function(event){
+                    try{
+                        this.re=parseInt(this.num1)/parseInt(this.num2);
+                    }
+                    catch(ex){
+                        alert(ex.message)
+                    }
+                },
+                dojian:function(){
+                    this.re=parseInt(this.num1)-parseInt(this.num2);
+                },
+                doc:function(){
+                    this.re=parseInt(this.num1)*parseInt(this.num2);
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>

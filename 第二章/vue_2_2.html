@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绑定内联和类样式</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .ca{
+            background-color: bisque;
+            width: 400px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        img{
+            width: 200px;
+            height: 300px;
+        }
+        .a{
+            width: 120px;
+            height: 120px;
+            background-color: chocolate;
+        }
+        .b{
+            box-shadow: 5px 5px 10px #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-bind:class="style">
+
+        <!-- 通过数组的方式绑定样式 -->
+        <div :class="[yangshi1,yangshi2]"></div>
+        
+        <img :src="imgsrc" alt="">
+    </div>
+    
+
+
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                imgsrc:"./img/1.jpg",
+                style:"ca",
+                yangshi1:"a",
+                yangshi2:"b"
+            }
+        });
+    </script>
+</body>
+</html>
