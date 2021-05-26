@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用v-for 显示员工的个人信息</title>
+</head>
+<body>
+    <div id="app">
+
+        <!-- 
+            value 是你在Vue 对象的数据源中 自己写入的数据 ：万五、22、项目经理等
+            name  是你在Vue 对象的数据源中起的名字 ： name、age、obj等
+            index 代表索引
+         -->
+
+         <!-- 
+             v-for 循环中数据源有多少个就会循环多少次
+
+             emp 有四个字段 ： name、age、obj、sex
+             那么v-for就会循环四次
+          -->
+
+          <!-- 
+              运行完v-for 后 改变数据源的顺序 v-for会就地更新
+           -->
+
+        <div v-for="(value,name,index) in emp">
+            {{index}} 
+            {{name}}
+            {{value}} 
+            <!-- 文本插值是不会换行的 -->
+        </div>
+
+
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        var vm=new Vue({
+            el:"#app",
+            data:{
+                emp:{
+                    name:"万五",
+                    sex:"男",
+                    age:22,
+                    obj:"项目经理",
+                    
+                }
+            }
+        });
+    </script>
+</body>
+</html>

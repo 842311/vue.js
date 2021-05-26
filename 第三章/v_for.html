@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for 使用</title>
+</head>
+<body>
+    <!-- 
+        v-for 指令是一个基于数组来重复渲染的指令，通常用于显示列表和表格数据
+
+        v-for 指令需要使用 “ item initems ” 形式的特殊语法
+
+        items 是源数据数组
+        item  则是被迭代的数组元素的别名
+     -->
+
+     <div id="app">
+        <ul>
+            <!-- item 是从items表里取出来的一项 ，循环后就能把全部都取出来 -->
+            <!-- 
+                index 是索引 在开发中为了唯一标识每一个项 还可以用 key 来绑定一个主键
+                这里的key 绑定 index（索引）
+            -->
+            <li v-for="(item,index) in items":key="index">
+                <a href="#">{{index}} {{item}}</a>
+            </li>
+        </ul>
+     </div>
+
+     <script src="./js/vue.js"></script>
+     <script>
+         var vm=new Vue({
+            el:"#app",
+            data:{
+                items:[
+                    "部门管理",
+                    "员工管理",
+                    "签证管理"
+                ]
+            }
+         });
+     </script>
+</body>
+</html>
